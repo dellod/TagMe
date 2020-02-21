@@ -1,12 +1,14 @@
 ﻿{
+  // REMOVING THIS MAKES IT CROSS PLATFORM ACROSS WINDOWS, MAC, LINUX
+  /*
   "iisSettings": {
-    "windowsAuthentication": false, 
-    "anonymousAuthentication": true, 
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:65134",
       "sslPort": 44388
     }
-  },
+  },*/
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
