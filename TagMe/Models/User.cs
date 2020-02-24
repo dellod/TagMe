@@ -12,6 +12,10 @@ namespace TagMe.Models
 
         #region Properties
         // TODO: need to add uid
+        public Guid ID
+        {
+            get; set;
+        }
         public string Username
         {
             get; set;
@@ -43,14 +47,15 @@ namespace TagMe.Models
         /// <param name="u"></param>
         /// <param name="f"></param>
         /// <param name="l"></param>
-        public User(string u, string f, string l)
+        public User(Guid id, string u, string f, string l)
         {
+            ID = id;
             Username = u;
             FirstName = f;
             LastName = l;
         }
 
-        public User(User instance): this(instance.Username, instance.FirstName, instance.LastName)
+        public User(User instance): this(instance.ID, instance.Username, instance.FirstName, instance.LastName)
         {
 
         }
@@ -95,6 +100,7 @@ namespace TagMe.Models
             orginalPassword = builder.ToString();
             return orginalPassword;
         }
+
         public bool queryUser(string user)
         {
             return false;

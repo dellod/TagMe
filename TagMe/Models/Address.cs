@@ -62,7 +62,7 @@ namespace TagMe.Models
         /// Copy constructor.
         /// </summary>
         /// <param name="instance"></param>
-        public Address(Address instance): this(instance.City, instance.Country, instance.provinceOrState, instance.Coordinates.Latitude, instance.Coordinates.Longitude)
+        public Address(Address instance): this(instance.City, instance.Country, instance.ProvinceOrState, instance.Coordinates.Latitude, instance.Coordinates.Longitude)
         {
 
         }
