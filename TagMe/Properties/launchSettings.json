@@ -1,14 +1,12 @@
-﻿{
-  // REMOVING THIS MAKES IT CROSS PLATFORM ACROSS WINDOWS, MAC, LINUX
-  /*
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:65134",
-      "sslPort": 44388
+      "applicationUrl": "http://localhost:51034/",
+      "sslPort": 44367
     }
-  },*/
+  },
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
@@ -20,10 +18,10 @@
     "TagMe": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
     }
   }
 }
