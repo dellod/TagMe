@@ -7,48 +7,66 @@ namespace TagMe.Models
 {
     public class Address
     {
-        private string city;
-        private string country;
-        private string provinceOrState;
-        private string street;
-        private Coordinate coordinates;
-
-        public Address(string ci, string co, string pos, double lat, double lon)
-        {
-            city = ci;
-            country = co;
-            provinceOrState = pos;
-            coordinates = new Coordinate(lat, lon);
-        }
-
+        #region Properties
         public string City
         {
-            get { return city; }
-            set { city = value; }
+            get; set;
         }
-        
+       
         public string Country
         {
-            get { return country; }
-            set { country = value; }
+            get; set;
         }
 
-        public string ProvOrState
+        public string ProvinceOrState
         {
-            get { return provinceOrState; }
-            set { provinceOrState = value; }
+            get; set;
         }
 
         public string Street
         {
-            get { return street; }
-            set { street = value; }
+            get; set;
         }
 
         public Coordinate Coordinates
         {
-            get { return coordinates; }
-            set { coordinates = value; }
+            get; set;
         }
+        #endregion
+
+        #region Constructors
+        /// <summary>
+        /// Default constructor (necessary for deserialization).
+        /// </summary>
+        public Address()
+        {
+        }
+
+        /// <summary>
+        /// Field constructor.
+        /// </summary>
+        /// <param name="ci"></param>
+        /// <param name="co"></param>
+        /// <param name="pos"></param>
+        /// <param name="lat"></param>
+        /// <param name="lon"></param>
+        public Address(string ci, string co, string pos, double lat, double lon)
+        {
+            City = ci;
+            Country = co;
+            ProvinceOrState = pos;
+            Coordinates = new Coordinate(lat, lon);
+        }
+
+        /// <summary>
+        /// Copy constructor.
+        /// </summary>
+        /// <param name="instance"></param>
+        public Address(Address instance): this(instance.City, instance.Country, instance.provinceOrState, instance.Coordinates.Latitude, instance.Coordinates.Longitude)
+        {
+
+        }
+        #endregion
+       
     }
 }

@@ -1,42 +1,105 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text; // Used for string builder
 using System.Threading.Tasks;
 
 namespace TagMe.Models
 {
     public class User
     {
-        //private var uuid; HAVE TO MAKE THIS BIG INTEGER, 128 bits
-        private string username;
-        private string firstName;
-        private string lastName;
-   
-        /** CONSTRUCTORS **/
-        public User(string u, string f, string l)
+        private const int encryptionValue = 6; // Used for encryption of passwords
+
+        #region Properties
+        // TODO: need to add uid
+        public string Username
         {
-            username = u;
-            firstName = f;
-            lastName = l;
+            get; set;
         }
 
-        /** GETTERS AND SETTERS **/
         public string FirstName
         {
-            get { return firstName; }
-            set { firstName = value; }
+            get; set;
         }
 
         public string LastName
         {
-            get { return lastName; }
-            set { lastName = value; }
+            get; set;
+        }
+        #endregion
+
+        #region Constructors
+        /// <summary>
+        /// Default constructor (necessary for deserialization).
+        /// </summary>
+        public User()
+        {
+
         }
 
-        /** METHODS **/
+        /// <summary>
+        /// Field constructor.
+        /// </summary>
+        /// <param name="u"></param>
+        /// <param name="f"></param>
+        /// <param name="l"></param>
+        public User(string u, string f, string l)
+        {
+            Username = u;
+            FirstName = f;
+            LastName = l;
+        }
+
+        public User(User instance): this(instance.Username, instance.FirstName, instance.LastName)
+        {
+
+        }
+        #endregion
+
+        #region Methods
+        /// <summary>
+        /// This method will encrypt passwords with static encryption value given the original 
+        /// password and will return the newly encrypted password.
+        /// </summary>
+        /// <param name="pass"> Original password before encryption </param>
+        /// <returns> Encrypted password </returns>
+        public string encryptPassword(string pass)
+        {
+            string encryptedPassword;
+            var builder = new StringBuilder();
+            for(int i = 0; i < pass.Length; i++)
+            {
+                char c = pass[i];
+                c += (char)encryptionValue;
+                builder.Append(c);
+            }
+            encryptedPassword = builder.ToString();
+            return encryptedPassword;
+        }
+        /// <summary>
+        /// Decrypts a password given an encrypted password and will return the orginal 
+        /// password.
+        /// </summary>
+        /// <param name="encryptedPass"> An encrypted password </param>
+        /// <returns> Original password </returns>
+        public string decryptPassword(string encryptedPass)
+        {
+            string orginalPassword;
+            var builder = new StringBuilder();
+            for(int i = 0; i < encryptedPass.Length; i++)
+            {
+                char c = encryptedPass[i];
+                c -= (char)encryptionValue;
+                builder.Append(c);
+            }
+            orginalPassword = builder.ToString();
+            return orginalPassword;
+        }
         public bool queryUser(string user)
         {
+            return false;
             // NEED TO GET FROM DATABASE
         }
+        #endregion
     }
 }

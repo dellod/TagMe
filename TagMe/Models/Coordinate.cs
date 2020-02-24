@@ -7,8 +7,17 @@ namespace TagMe.Models
 {
     public class Coordinate
     {
-        private double latitude;
-        private double longitude;
+        #region Properties
+        public double Latitude
+        {
+            get; set;
+        }
+
+        public double Longitude
+        {
+            get; set;
+        }
+        #endregion
 
         #region Constructors
         /// <summary>
@@ -17,7 +26,7 @@ namespace TagMe.Models
         public Coordinate()
         {
         }
-
+      
         /// <summary>
         /// Field constructor.
         /// </summary>
@@ -25,29 +34,19 @@ namespace TagMe.Models
         /// <param name="lon"> Longitude argument </param>
         public Coordinate(double lat, double lon)
         {
-            latitude = lat;
-            longitude = lon;
+            Latitude = lat;
+            Longitude = lon;
         }
 
         /// <summary>
         /// Copy constructor.
         /// </summary>
         /// <param name="instance"> Instance that is being copied </param>
-        public Coordinate(Coordinate instance): this(instance.latitude, instance.longitude)
+        public Coordinate(Coordinate instance): this(instance.Latitude, instance.Longitude)
         {
         }
         #endregion
 
-        public double Latitude
-        {
-            get { return latitude; }
-            set { latitude = value; }
-        }
-
-        public double Longitude
-        {
-            get { return longitude; }
-            set { longitude = value; }
-        }
+        
     }
 }
