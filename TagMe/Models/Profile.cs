@@ -10,6 +10,6 @@ namespace TagMe.Models
         private Address location;
         private string profilePictureURL;
         // TODO: need list of favourite tags
-        // TODO: need list of followers
+
     }
 }

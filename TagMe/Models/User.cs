@@ -101,10 +101,16 @@ namespace TagMe.Models
             return orginalPassword;
         }
 
-        public bool queryUser(string user)
+        public User queryUser(string user) // assuming usernames are unique
         {
-            return false;
+            return null;
             // NEED TO GET FROM DATABASE
+        }
+
+        public bool addNewUser(User user)
+        {
+            //TODO: first check if username exists in database first
+            return false;
         }
         #endregion
     }
