@@ -11,7 +11,6 @@ namespace TagMe.Models
         private const int encryptionValue = 6; // Used for encryption of passwords
 
         #region Properties
-        // TODO: need to add uid
         public Guid ID
         {
             get; set;
@@ -27,6 +26,11 @@ namespace TagMe.Models
         }
 
         public string LastName
+        {
+            get; set;
+        }
+
+        public Profile UserProfile
         {
             get; set;
         }
@@ -47,12 +51,13 @@ namespace TagMe.Models
         /// <param name="u"></param>
         /// <param name="f"></param>
         /// <param name="l"></param>
-        public User(Guid id, string u, string f, string l)
+        public User(Guid id, string u, string f, string l, Profile p)
         {
             ID = id;
             Username = u;
             FirstName = f;
             LastName = l;
+            UserProfile = p;
         }
 
         public User(User instance): this(instance.ID, instance.Username, instance.FirstName, instance.LastName)
