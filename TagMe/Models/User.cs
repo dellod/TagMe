@@ -60,7 +60,7 @@ namespace TagMe.Models
             UserProfile = p;
         }
 
-        public User(User instance): this(instance.ID, instance.Username, instance.FirstName, instance.LastName)
+        public User(User instance): this(instance.ID, instance.Username, instance.FirstName, instance.LastName, instance.UserProfile)
         {
 
         }
