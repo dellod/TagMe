@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TagMe.Models;
 
 namespace TagMe
 {
@@ -23,6 +25,15 @@ namespace TagMe
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<AppUser, AppRole>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+            }).AddEntityFrameworkStores<IdentityAppContext>();  // some ooptions and where willl be saved
+
+            // I guess here will connect to the data base itself
+            services.AddDbContext<IdentityAppContext>(cfg => {
+                cfg.UseSqlServer(Configuration.GetConnectionString("WebApplication3ContextConnection"));
+            });
             services.AddControllersWithViews();
         }
 
